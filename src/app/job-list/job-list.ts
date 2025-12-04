@@ -22,6 +22,8 @@ export class JobList implements OnInit {
   jobLocationSearch = "";
   jobTypeSearch = "";
 
+  loading = false;
+
   jobDetails: Job | null = null;
   showApplicationModal = false;
   isSubmitting = false;
@@ -54,8 +56,13 @@ export class JobList implements OnInit {
   };
 
   async ngOnInit() {
-    await this.jobService.loadJobs();
-    this.jobs = this.jobService.list();
+    this.loading = true; // Start loading
+    try {
+      await this.jobService.loadJobs();
+      this.jobs = this.jobService.list();
+    } finally {
+      this.loading = false; // Stop loading even if error
+    }
   }
 
   searchJob() {

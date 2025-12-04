@@ -3,23 +3,34 @@
   <div class="row mx-5 my-4">
     <div class="col-4">
       @if (loading) {
-        <p class="text-muted">Loading...</p>
-      } @else if (jobs.length === 0) {
-        <p class="text-muted">You haven't posted any jobs yet.</p>
-      } @else {
-        <div class="mb-3">
-          <label class="form-label fw-bold">Sort By:</label>
-          <select class="form-select" [(ngModel)]="sortBy" (change)="onSortChange()">
-            <option value="date-desc">Newest First</option>
-            <option value="date-asc">Oldest First</option>
-            <option value="title-asc">Title (A-Z)</option>
-            <option value="title-desc">Title (Z-A)</option>
-            <option value="status-asc">Status (A-Z)</option>
-            <option value="status-desc">Status (Z-A)</option>
-            <option value="applicants-desc">Most Applicants</option>
-            <option value="applicants-asc">Least Applicants</option>
-          </select>
+        <div class="text-center py-5">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
         </div>
+      } @else if (jobs.length === 0) {
+        <div class="text-center py-5 bg-white rounded border">
+          <p class="text-muted mb-0">You haven't posted any jobs yet.</p>
+        </div>
+      } @else {
+        <div class="mb-4">
+          <label class="form-label fw-bold small text-muted text-uppercase mb-2">Sort By</label>
+          <div class="input-icon-container">
+            <i class="fas fa-sort-amount-down input-icon"></i>
+            <i class="fas fa-chevron-down dropdown-arrow"></i>
+            <select class="form-control" [(ngModel)]="sortBy" (change)="onSortChange()">
+              <option value="date-desc">Newest First</option>
+              <option value="date-asc">Oldest First</option>
+              <option value="title-asc">Title (A-Z)</option>
+              <option value="title-desc">Title (Z-A)</option>
+              <option value="status-asc">Status (A-Z)</option>
+              <option value="status-desc">Status (Z-A)</option>
+              <option value="applicants-desc">Most Applicants</option>
+              <option value="applicants-asc">Least Applicants</option>
+            </select>
+          </div>
+        </div>
+
         <div class="job-list">
           @for (job of jobs; track job.id) {
             <div class="job-item" [class.active]="selectedJob?.id === job.id" (click)="viewJob(job)">
@@ -34,6 +45,7 @@
         </div>
       }
     </div>
+    
     <div class="col">
       @if (selectedJob) {
         <div class="job-details-card">
@@ -44,11 +56,13 @@
             </div>
             <span class="badge" [ngClass]="getStatusBadgeClass(selectedJob.status)">{{ selectedJob.status }}</span>
           </div>
+          
           <div class="job-meta my-3">
             <span class="badge badge-meta me-2">{{ selectedJob.location }}</span>
             <span class="badge badge-meta me-2">{{ selectedJob.type }}</span>
             <span class="badge bg-success">{{ selectedJob.salary }}</span>
           </div>
+          
           <p class="mt-4">{{ selectedJob.description }}</p>
           @if (selectedJob.postedDate) {
             <p class="text-muted small mt-4">
@@ -61,7 +75,7 @@
             @if (selectedJob.applicants && selectedJob.applicants.length > 0) {
               <div class="applicants-list">
                 @for (applicant of selectedJob.applicants; track applicant.userId) {
-                  <div class="applicant-item card mb-2 p-3">
+                  <div class="applicant-item mb-2">
                     <div class="d-flex justify-content-between align-items-start">
                       <div>
                         <p class="fw-bold mb-1">{{ applicant.name || applicant.email }}</p>
@@ -70,7 +84,7 @@
                           Applied: {{ applicant.appliedAt | date: 'short' }}
                         </p>
                         @if (applicant.status) {
-                          <p class="small mt-1">
+                          <p class="small mt-1 mb-0">
                             <span class="badge"
                                   [ngClass]="{
                                     'bg-success': applicant.status === 'accepted',
@@ -112,21 +126,21 @@
                 }
               </div>
             } @else {
-              <p class="text-muted">No applicants yet</p>
+              <p class="text-muted fst-italic">No applicants yet.</p>
             }
           </div>
 
           <div class="action-buttons mt-4 d-flex gap-2">
-            <button class="btn btn-primary" (click)="startEdit(selectedJob)">Edit</button>
+            <button class="btn btn-primary" (click)="startEdit(selectedJob)">Edit Job</button>
             <button class="btn btn-danger" (click)="openDeleteConfirm(selectedJob.id)" [disabled]="isDeleting">
-              Delete
+              Delete Job
             </button>
           </div>
         </div>
       } @else {
         <div class="empty-details text-center py-5">
-          <i class="fas fa-search empty-details-icon"></i>
-          <p class="text-muted">Select a job to view details</p>
+          <i class="fas fa-briefcase empty-details-icon"></i>
+          <p class="text-muted mt-3">Select a job from the list to view details and applicants.</p>
         </div>
       }
     </div>

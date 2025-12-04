@@ -72,22 +72,13 @@ p{
 }
 /* --- END EMPTY DETAILS ICON STYLES --- */
 
-/* --- NEW BADGE STYLE (for Location/Type) --- */
-.badge-meta {
-  background-color: #051a49; 
-  color: white; 
-  padding: 0.5em 0.8em;
-  font-weight: 500;
-  border-radius: 4px;
-}
-/* --- END NEW BADGE STYLE --- */
 
 .job-list {
   max-height: 75vh;
   overflow-y: auto;
 }
 
-.job-item, .job-details-card {
+.job-item, .job-details-card, h1, h2, h3, p {
   font-family: 'Poppins', sans-serif;
 }
 
@@ -120,7 +111,7 @@ p{
   padding: 4px 8px;
   transition: transform 0.2s;
   height: auto;
-  color: inherit;
+  color:#FFC72C;
 }
 
 .save-btn:hover {
@@ -143,7 +134,7 @@ p{
 }
 
 .job-details-card h2 {
-  color: #051a49;
+  color: #27272a;
   margin-bottom: 0.5rem;
 }
 
@@ -160,8 +151,8 @@ p{
 
 /* --- Primary Button (Search & Apply) Styles: Lighter Blue --- */
 .btn-primary {
-  background-color: #0c41b5; 
-  border-color: #0c41b5;
+  background-color: #18181b; 
+  border-color: #18181b;
   padding: 8px 16px; 
   font-size: 0.9rem; 
   border-radius: 8px;
@@ -169,8 +160,8 @@ p{
 }
 
 .btn-primary:hover {
-  background-color: #0d3487;
-  border-color: #0d3487;
+  background-color: #55555a;
+  border-color: #55555a;
 }
 
 /* --- Danger Button (Reset) Styles: Red --- */
@@ -214,7 +205,7 @@ p{
 }
 
 .modal-content h2 {
-  color: #051a49;
+  color: #18181b;
   font-weight: 700;
   margin-bottom: 12px;
 }
@@ -229,6 +220,7 @@ p{
   border-radius: 8px;
   font-family: 'Poppins', sans-serif;
   transition: border-color 0.2s, box-shadow 0.2s;
+  color: #18181b;
 }
 
 .form-group textarea:focus {
@@ -240,14 +232,14 @@ p{
 .modal-footer {
   display: flex;
   gap: 12px;
-  justify-content: flex-end;
+  justify-content: flex-end; 
   padding-top: 20px;
   border-top: 1px solid #e0e0e0;
 }
 
 .btn-secondary {
-  background-color: #6c757d;
-  border-color: #6c757d;
+  background-color: #cf2e3f;
+  border-color: #cf2e3f;
   color: white;
   padding: 10px 20px;
   border-radius: 8px;
@@ -255,8 +247,8 @@ p{
 }
 
 .btn-secondary:hover {
-  background-color: #5a6268;
-  border-color: #5a6268;
+  background-color: #dc2626;
+  border-color: #dc2626;
 }
 
 .confirmation-content {
@@ -266,4 +258,15 @@ p{
 .confirmation-icon {
   font-size: 5rem;
   display: block;
+}
+
+.btn-cancel-modal {
+  font-size: 0.85rem !important; 
+  padding: 6px 14px !important;   
+  height: fit-content;
+}
+
+.question-text {
+  color: var(--primary-color) !important; 
+  font-size: 1rem;
 }

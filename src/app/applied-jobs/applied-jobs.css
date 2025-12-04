@@ -39,7 +39,7 @@
 .card-title {
   font-weight: 800;
   font-size: 1.50rem;
-  color: #051a49;
+  color: #18181b;
 }
 
 .company-name {
@@ -48,7 +48,7 @@
 }
 
 .badge-meta {
-  background-color: #051a49;
+  background-color: #18181b;
   color: white;
   padding: 0.5em 0.8em;
   font-weight: 500;
