@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Pacifico&display=swap');
+
+body {
+ font-family: 'Poppins', sans-serif;
+ background-color: #eeeff5 !important; 
+ color: #334155;
+}
+a {
+ text-decoration: none;
+ transition: opacity 0.2s;
+}
+
+a:hover {
+ opacity: 0.8;
+}
